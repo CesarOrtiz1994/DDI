@@ -3,7 +3,6 @@ import { ENV } from "../util/constants";
 async function register(email, username, password) {
     try {
         const url = `${ENV.API_URL}${ENV.ENDPOINTS.RESGISTER}`;
-        console.log(url);
         const params = {
             method: 'POST',
             headers: {
@@ -22,7 +21,6 @@ async function register(email, username, password) {
 async function login(identifier, password) {
     try {
         const url = `${ENV.API_URL}${ENV.ENDPOINTS.LOGIN}`;
-        console.log(url);
         const params = {
             method: 'POST',
             headers: {

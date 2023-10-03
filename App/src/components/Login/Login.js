@@ -29,7 +29,6 @@ export default function Login(props) {
     validateOnChange: false,
     onSubmit: async (formData) => {
         const { identifier, password } = formData;
-        console.log(formData);
         try {
             respose = await authApi.login(identifier, password)
             login(respose.jwt);

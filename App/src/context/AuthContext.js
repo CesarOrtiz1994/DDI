@@ -6,38 +6,39 @@ export const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
     const { children } = props;
-
-    const getSession = async () => {
-        try {
-            const token = await storageController.getToken();
-                console.log('Token -->', token);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const login = async (token) => {
         try {
-            console.log('Obteniendo token', token)
             await storageController.setToken(token);
-            const user = await usersController.getMe(token);
-            console.log('User -->', user);
+            const response = await usersController.getMe();
+            setUser(response);
+            setLoading(false);
+            console.log(response);
+            console.log('User -->', response);
         } catch (error) {
             console.log(error);
         }
     }
 
-    const data = {
-        user: null,
-        login,
-        logout: () => console.log('logout'),
-        upDateUser: () => console.log('upDateUser')
-    };
+    const getSession = async () => {
+            const token = await storageController.getToken();
+            setLoading(false);
+    }
 
     useEffect(() => {
         getSession();
     }, []);
 
+    const data = {
+        user,
+        login,
+        logout: () => console.log('logout'),
+        upDateUser: () => console.log('upDateUser')
+    };
+
+    if (loading) return null;
     return (
         <AuthContext.Provider value={data}>
             {children}
