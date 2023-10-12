@@ -14,7 +14,7 @@ export default function Card(props) {
       <View style={styles.cardContainer}>
         <Avatar.Image size={70} source={{ uri: character.image }} />
         <View style={styles.contentext}> 
-          <Text style={styles.cardTitle}> {character.name} </Text>
+          <Text style={styles.cardTitle}>{character.name}</Text>
           <Text style={styles.cardText}>Especie: {character.species} </Text>
         </View>
         <Text style={styles.cardTextSecondary}>#0{character.id} </Text>
