@@ -6,7 +6,6 @@ import { useAuth } from '../hooks/useAuth';
 
 export default function MiCuenta() {
     const { user, logout } = useAuth();
-    console.log(user);
   return (
     <View style={styles.container}>
         <View style={styles.header}>

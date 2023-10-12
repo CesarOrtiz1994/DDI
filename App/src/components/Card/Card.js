@@ -7,7 +7,6 @@ export default function Card(props) {
   const { character } = props;
   const goToPersonaje = () => {
     console.log("Conose mas del personaje: ${character.name}");
-    console.log(character.image);
   };
 
   return (

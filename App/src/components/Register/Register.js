@@ -30,7 +30,6 @@ export default function Register(props) {
                 setShowLogin(true);
             } catch (error) {
                 console.log(error);
-                // console.log("algo salio mal");
             }
         }
 

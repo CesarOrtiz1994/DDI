@@ -16,8 +16,6 @@ export const AuthProvider = (props) => {
             const response = await usersController.getMe();
             setUser(response);
             setLoading(false);
-            console.log(response);
-            console.log('User -->', response);
         } catch (error) {
             console.log(error);
         }

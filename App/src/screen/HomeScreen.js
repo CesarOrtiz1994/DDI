@@ -6,7 +6,6 @@ import { styles } from '../styles/HomeScreen.styles'
 
 export default function HomeScreen(props) {
   const { characters } = props;
-  console.log('characters', characters);
 
   return (
     <ImageBackground source={require('../assets/img/fondo.jpg')} resizeMode="cover" style={styles.fondo}>

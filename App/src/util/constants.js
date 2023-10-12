@@ -7,6 +7,7 @@ export const ENV = {
         USERS_ME: '/users/me',
     },
     STORAGE: {
-        TOKEN: "token"
+        TOKEN: "token",
+        FAVORITES: "favorites",
     }
 };
