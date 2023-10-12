@@ -1,24 +1,27 @@
 
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import React from 'react'
-import { Avatar } from 'react-native-paper';
+import { Avatar, Button } from 'react-native-paper';
+import { useAuth } from '../hooks/useAuth';
 
 export default function MiCuenta() {
+    const { user, logout } = useAuth();
+    console.log(user);
   return (
     <View style={styles.container}>
         <View style={styles.header}>
-          <Text>hOLA</Text>
-          <Avatar.Image size={50} source={require('../assets/img/person1.jpeg')} />
         </View>
         <ScrollView>
             <View style={styles.mainContainer}>
-                <Text>AccountScreen</Text>
-                
+                <Avatar.Image size={100} source={require('../assets/img/person1.jpeg')} />       
+                <Text> {user.username}</Text>      
+                <Text> {user.email}</Text>
+                <Button onPress={logout} > 
+                    Cerrar sesión
+                </Button>   
             </View>
         </ScrollView>
-        <View style={styles.footer}>
-
-        </View>
+        
     </View>
   )
 }
@@ -32,7 +35,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 10,
-        backgroundColor: 'red',
     },
     mainContainer: {
         flex: 1,

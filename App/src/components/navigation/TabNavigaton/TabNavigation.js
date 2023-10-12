@@ -1,6 +1,7 @@
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../../../screen/HomeScreen";
+import Rm from "../../../api/rm";
 import FavotiteScreen from "../../../screen/FavotiteScreen";
 import Configuracion from "../../../screen/Configuracion";
 import MiCuenta from "../../../screen/MiCuenta";
@@ -15,11 +16,21 @@ export default function TabNavigation() {
       screenOptions={({ route }) => ({
         tabBarIcon: (routeStatus) => setIcon(route, routeStatus),
       })} >
+        <Tab.Screen
+        name="Account"
+        component={MiCuenta}
+        options={{
+          title: "Mi cuenta",
+        }}
+      />
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={Rm}
         options={{
-          title: "Inicio",
+          title: "",
+          tabBarIcon: () => <Image source={require('../../../assets/img/icono.png')} />,
+          headerShown: false,
+
         }}
       />
       <Tab.Screen
@@ -29,20 +40,13 @@ export default function TabNavigation() {
           title: "Favoritos",
         }}
       />
-      <Tab.Screen
-        name="Account"
-        component={MiCuenta}
-        options={{
-          title: "Mi cuenta",
-        }}
-      />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Settings"
         component={Configuracion}
         options={{
           title: "Configuración",
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 }
@@ -51,7 +55,7 @@ const setIcon = (route, routeStatus) => {
   let iconName = '';
   let color = '#6E6E6E';
   if (route.name === 'Home') {
-    iconName = 'home';
+    // iconName = 'home';
     }
     if (route.name === 'Settings') {
     iconName = 'cog';
@@ -63,7 +67,7 @@ const setIcon = (route, routeStatus) => {
     iconName = 'user';
     }
     if (routeStatus.focused) {
-    color = '#00B0FF';
+    color = '#70d208';
     }
 
   return <AwesomeIcon name={iconName} color={color} style={styles.icon} />
