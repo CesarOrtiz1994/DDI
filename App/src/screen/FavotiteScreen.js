@@ -1,25 +1,21 @@
-import { View } from "react-native";
-import { Card, Text, Button } from "react-native-paper";
-import React from "react";
+import { View, Text } from "react-native"
+import React from "react"
+import { getFavoriteApi } from "../api/favorito"
+import { Button } from "react-native-paper"
 
-export default function FavotiteScreen() {
+export default function FavoritesScreen() {
+  const checkFavorite = async () => {
+    const response = await getFavoriteApi()
+    console.log(response)
+  }
   return (
     <View>
-      <Card>
-        <Card.Title
-          title="Card de prueba"
-        />
-        <Card.Content>
-          <Text variant="titleLarge">
-            learn more about how to build great products with React Native.
-          </Text>
-        </Card.Content>
-        <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
-        <Card.Actions>
-          <Button>Cancel</Button>
-          <Button>Ok</Button>
-        </Card.Actions>
-      </Card>
+      <Button
+        mode="contained"
+        onPress={checkFavorite}
+      >
+        Obtener favoritos
+      </Button>
     </View>
-  );
+  )
 }

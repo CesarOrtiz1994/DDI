@@ -1,5 +1,5 @@
 export const ENV = {
-    API_URL: 'http://172.31.129.12:1337/api',
+    API_URL: 'http://192.168.0.9:1337/api',
     API_URL_RM: 'https://rickandmortyapi.com/api/character/',
     ENDPOINTS: {
         RESGISTER: '/auth/local/register',
@@ -8,6 +8,6 @@ export const ENV = {
     },
     STORAGE: {
         TOKEN: "token",
-        FAVORITES: "favorites",
+        FAVORITE: "favorite",
     }
 };

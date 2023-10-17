@@ -3,9 +3,6 @@ import React, { useState } from 'react'
 import Login from '../../components/Login/Login';
 import Register from '../../components/Register/Register';
 import { styles } from './AuthScreen.style'
-// import font from '../../constant/font'
-// import Color from '../../constant/Color'
-// import  ButtonSocial  from '../../components/ButtonSocial'
 import  logo from '../../assets/img/pngegg(2).png'
 
 

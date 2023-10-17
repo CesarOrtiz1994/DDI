@@ -2,12 +2,23 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { styles } from "./Card.styles";
 import { Avatar } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native"
 
 export default function Card(props) {
   const { character } = props;
+  const navigation = useNavigation()
   const goToPersonaje = () => {
-    console.log("Conose mas del personaje: ${character.name}");
-  };
+    navigation.navigate("Detail", {
+      id: character.id,
+      name: character.name,
+      status: character.status,
+      species: character.species,
+      type: character.type,
+      image: character.image,
+      gender: character.gender,
+      origin: character.origin.name,
+    })
+  }
 
   return (
     <TouchableOpacity onPress={goToPersonaje}>
