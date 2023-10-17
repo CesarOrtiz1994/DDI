@@ -6,11 +6,14 @@ import { styles } from '../styles/HomeScreen.styles'
 
 export default function HomeScreen(props) {
   const { characters } = props;
+  const { title } = props;
 
   return (
     <ImageBackground source={require('../assets/img/fondo.jpg')} resizeMode="cover" style={styles.fondo}>
     <SafeAreaView>
-    <Text style={styles.title}>Personajes</Text>
+    <Text style={styles.title}>
+        {title}
+    </Text>
 
       <FlatList
         data={characters}

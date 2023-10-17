@@ -40,6 +40,8 @@ export default function TabNavigation() {
         component={FavotiteScreen}
         options={{
           title: "Favoritos",
+          headerShown: false,
+          headerTransparent: true
         }}
       />
       {/* <Tab.Screen

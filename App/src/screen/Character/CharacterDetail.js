@@ -13,6 +13,16 @@ export default function CharacterDetail(props) {
 
   return (
     <View style={styles.container}>
+
+      <IconButton
+        icon="arrow-left"
+        color="#70d208"
+        size={30}
+        onPress={() => navigation.goBack()}
+        style={styles.back}
+      />
+
+
       <Avatar.Image
         size={250}
         source={{ uri: params.image }}

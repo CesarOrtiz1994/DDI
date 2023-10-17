@@ -20,7 +20,7 @@ export const getFavoriteApi = async () => {
 export const addFavoritosApi = async (id) => {
   try {
     console.log("añadir favoritos")
-    const favorites = []
+    const favorites = await getFavoriteApi()
     favorites.push(id)
     console.log("favoritos", favorites)
     await AsyncStorage.setItem(ENV.STORAGE.FAVORITE, JSON.stringify(favorites))

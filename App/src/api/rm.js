@@ -19,6 +19,6 @@ export default function Rm() {
     }, []);
 
     return (
-        <HomeScreen characters={characters} />
+        <HomeScreen characters={characters} title={'Pesonajes'} />
     )
 }
