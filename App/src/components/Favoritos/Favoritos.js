@@ -7,7 +7,6 @@ export default function Favoritos(props) {
   const [isFavorite, setIsFavorite] = useState(undefined)
   const [reloadFavorite, setReloadFavorite] = useState(false)
   const onReloadFavorite = () => setReloadFavorite(!reloadFavorite)
-  console.log('a    qui', isFavorite)
 
   useEffect(() => {
     (async () => {
@@ -19,8 +18,6 @@ export default function Favoritos(props) {
 
   const addFavoritos = async () => {
     try {
-      console.log("aqui")
-      console.log(id)
       await storageController.addFavoritosApi(id)
       onReloadFavorite()
     } catch (error) {

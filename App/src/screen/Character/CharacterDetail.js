@@ -9,7 +9,6 @@ export default function CharacterDetail(props) {
     navigation,
     route: { params },
   } = props
-  // console.log(params.id, params.name)
 
   return (
     <View style={styles.container}>

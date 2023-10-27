@@ -7,22 +7,19 @@ import { includes, pull } from "lodash"
 export const getFavoriteApi = async () => {
   try {
     const response = await AsyncStorage.getItem(ENV.STORAGE.FAVORITE)
-    console.log("response1", response)
     return JSON.parse(response || [])
   } catch (error) {
     console.log("error1", error)
     const response = await AsyncStorage.getItem(ENV.STORAGE.FAVORITE)
-    console.log("response", response)
   }
 }
 
 // función para añadir a favoritos
 export const addFavoritosApi = async (id) => {
   try {
-    console.log("añadir favoritos")
     const favorites = await getFavoriteApi()
     favorites.push(id)
-    console.log("favoritos", favorites)
+    favorites.sort((a, b) => a - b);
     await AsyncStorage.setItem(ENV.STORAGE.FAVORITE, JSON.stringify(favorites))
   } catch (err) {
     console.log("error at addFavoritosApi: ", err)

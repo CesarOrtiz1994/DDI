@@ -1,35 +1,47 @@
-import { View, Text } from "react-native"
-import React, {useState} from "react"
-import { getFavoriteApi } from "../api/favorito"
-import { Button } from "react-native-paper"
-import { useFocusEffect } from "@react-navigation/native"
-import { ENV } from "../util/constants"
-import axios from "axios"
-import HomeScreen from "./HomeScreen"
+import React, { useState } from "react";
+import { getFavoriteApi } from "../api/favorito";
+import { useFocusEffect } from "@react-navigation/native";
+import { ENV } from "../util/constants";
+import axios from "axios";
+import HomeScreen from "./HomeScreen";
 
 export default function FavoritesScreen() {
-  const [personajes, setPersonajes] = useState([])
-  const [characters, setCharacters] = useState([])
+  const [characters, setCharacters] = useState([]);
 
   useFocusEffect(
     React.useCallback(() => {
-
-      (async () => {
-        const response = await getFavoriteApi()
-        console.log(response)
-        setPersonajes(response)
-
+      const fetchData = async () => {
         try {
-          const responseCharacters = await axios.get(ENV.API_URL_RM);
-          setCharacters(responseCharacters.data.results);
+          const favoriteResponse = await getFavoriteApi();
+
+          const characterDetails = await Promise.all(
+            favoriteResponse.map(async (id) => {
+              const characterResponse = await axios.get(
+                ENV.API_URL_RM + '/' + id
+              );
+              return characterResponse.data;
+            })
+          );
+
+          setCharacters(characterDetails);
         } catch (error) {
           console.log(error);
         }
-      })();
+      };
+
+      fetchData();
     }, [])
-  )
+  );
+
+  const loadMoreData = async () => {
+   console.log("caragr datos")
+  };
 
   return (
-    <HomeScreen characters={characters.filter((character) => personajes.includes(character.id))} title={'Favoritos'} />
-  )
+    <HomeScreen
+      characters={characters}
+      title={"Favoritos"}
+      loadMoreData={loadMoreData}
+    />
+  );
 }
