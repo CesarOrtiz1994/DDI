@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { styles } from './Menu.style'
 import { List } from 'react-native-paper'
@@ -13,13 +12,15 @@ export default function Menu() {
 
   return (
     <List.Section>
-      <List.Subheader>Mi cuenta</List.Subheader>
       {map(accountMenu, (menu) => (
         <List.Item
           key={menu.title}
+          titleStyle={styles.title} // Aplica el estilo al título
+          descriptionStyle={styles.description} // Aplica el estilo a la descripción
+          style={styles.listItem}
           title={menu.title}
           description={menu.description}
-          left={props => <List.Icon {...props} icon={menu.leftIcon} />}
+          left={props => <List.Icon {...props} icon={menu.leftIcon} color='#70d208' />}
           onPress={() => navigation.navigate(menu.screen)}
         />
       ))}

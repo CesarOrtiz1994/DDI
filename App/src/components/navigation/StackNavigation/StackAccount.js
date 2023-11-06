@@ -13,27 +13,27 @@ export default function StackAccount() {
       <Stack.Screen
         name="Micuenta"
         component={MiCuenta}
-        options={{ title: "", headerTransparent: true }}
+        options={{ title: "", headerTransparent: true, headerShown:false  }}
       />
       <Stack.Screen
         name="ChangeName"
         component={ChangeName}
-        options={{ title: "", headerTransparent: true }}
+        options={{ title: "Cambiar nombre y apellido", headerTransparent: true, headerTintColor: '#70d208'}}
       />
       <Stack.Screen
         name="ChangeUsername"
         component={ChangeUsername}
-        options={{ title: "", headerTransparent: true }}
+        options={{ title: "Cambiar Username", headerTransparent: true, headerTintColor: '#70d208' }}
       />
       <Stack.Screen
         name="ChangeEmail"
         component={ChangeEmail}
-        options={{ title: "", headerTransparent: true }}
+        options={{ title: "Cambiar Email", headerTransparent: true, headerTintColor: '#70d208' }}
       />
       <Stack.Screen
         name="ChangePassword"
         component={ChangePassword}
-        options={{ title: "", headerTransparent: true }}
+        options={{ title: "Cambiar Contraseña", headerTransparent: true, headerTintColor: '#70d208' }}
       />
     </Stack.Navigator>
   );

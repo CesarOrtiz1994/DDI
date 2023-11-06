@@ -4,15 +4,18 @@ import { useFocusEffect } from "@react-navigation/native";
 import { ENV } from "../util/constants";
 import axios from "axios";
 import HomeScreen from "./HomeScreen";
+import { useAuth } from "../hooks/useAuth";
+
 
 export default function FavoritesScreen() {
   const [characters, setCharacters] = useState([]);
+  const { user } = useAuth();
 
   useFocusEffect(
     React.useCallback(() => {
       const fetchData = async () => {
         try {
-          const favoriteResponse = await getFavoriteApi();
+          const favoriteResponse = await getFavoriteApi(user.id);
 
           const characterDetails = await Promise.all(
             favoriteResponse.map(async (id) => {

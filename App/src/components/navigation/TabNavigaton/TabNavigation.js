@@ -21,6 +21,8 @@ export default function TabNavigation() {
         component={StackAccount}
         options={{
           title: "Mi cuenta",
+          headerShown: false,
+          headerTransparent: true,
         }}
       />
       <Tab.Screen

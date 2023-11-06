@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StyleSheet, Alert } from "react-native";
+import { View, Text, ScrollView, StyleSheet, Alert, ImageBackground } from "react-native";
 import React from "react";
 import { Avatar, Button } from "react-native-paper";
 import { useAuth } from "../../hooks/useAuth";
@@ -27,9 +27,13 @@ export default function MiCuenta() {
 
   return (
     <View style={styles.container}>
+      <ImageBackground
+        source={require("../../assets/img/fondo.jpg")}
+        style={styles.fondo}
+      >
       <View style={styles.header}>
         <Text style={styles.title}>Bievenido</Text>
-        <Text>
+        <Text style={styles.title1}>
           {user.firstname && user.lastname
             ? `${user.firstname} ${user.lastname}`
             : user.email}
@@ -38,8 +42,9 @@ export default function MiCuenta() {
 
       <View style={styles.mainContainer}>
         <Menu />
-        <Button onPress={logoutAlert}>Cerrar sesión</Button>
+        <Button icon="logout" mode="contained" onPress={logoutAlert}>Cerrar sesión</Button>
       </View>
+      </ImageBackground>
 
       
     </View>
@@ -49,6 +54,12 @@ export default function MiCuenta() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+
+  fondo: {
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 30,
   },
   header: {
     flexDirectio: "row",
@@ -65,5 +76,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 10,
     backgroundColor: "blue",
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#70d208",
+    textAlign: "center",
+    marginTop: 40,
+    marginBottom: 10,
+  },
+  title1: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#70d208",
+    textAlign: "center",
   },
 });
